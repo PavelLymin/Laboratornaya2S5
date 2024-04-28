@@ -1,0 +1,44 @@
+﻿<Window x:Class="Laboratornaya2S5.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Laboratornaya2S5"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <ListView ItemsSource="{Binding Employees}" SelectedItem="{Binding SelectedModel}" SelectionMode="Single" Margin="345,10,35,10">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Название" DisplayMemberBinding="{Binding NameSubject}"/>
+                    <GridViewColumn Header="Преподаватель" DisplayMemberBinding="{Binding Name}"/>
+                    <GridViewColumn Header="Уровень сложности" DisplayMemberBinding="{Binding Level}"/>
+                    <GridViewColumn Header="Дата зачета/экзамена" DisplayMemberBinding="{Binding Data}"/>
+                    <GridViewColumn Header="Начало подготовки" DisplayMemberBinding="{Binding StartData}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <StackPanel DataContext="{Binding NewEmployee}" Margin="10,4,475,4">
+            <TextBlock Text="Добавить новую дисциплину"/>
+
+            <TextBlock Text="Название дисциплины" Height="19" Width="260"  />
+            <TextBox Text="{Binding NameSubject}" Height="30" Width="315" />
+
+            <TextBlock Text="Преподаватель" Height="19" Width="260"  />
+            <TextBox Text="{Binding Name}" Height="30" Width="315" />
+
+            <TextBlock Text="Уровень сложности" Height="19" Width="260"  />
+            <ComboBox Text="{Binding Level}" Height="30" Width="315">
+                <ComboBoxItem Content="Простой"/>
+                <ComboBoxItem Content="Средний"/>
+                <ComboBoxItem Content="Сложный"/>
+            </ComboBox >
+
+            <TextBlock Text="Дата зачета/экзамена" Height="19" Width="260"  />
+            <DatePicker SelectedDate="{Binding Data}"/>
+        </StackPanel>
+
+        <Button Command="{Binding AddCommand}" Content="Добавить" HorizontalAlignment="Left" Margin="115,311,0,0" VerticalAlignment="Top" Width="160" Height="28"/>
+        <Button Command="{Binding AddCommand1}" Content="Удалить" HorizontalAlignment="Left" Margin="115,353,0,0" VerticalAlignment="Top" Width="160" Height="28"/>
+    </Grid>
+</Window>
